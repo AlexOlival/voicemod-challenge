@@ -35,6 +35,12 @@ That's it!
 
 `./vendor/bin/sail test`
 
+
+## Shutting down
+
+Simply use the Docker CLI or the UI as normal; or you can use Sail's command to gracefully shutdown:
+`./vendor/bin/sail down`
+
 ## Potential issues
 Port collisions; ensure that no services are running and being exposed on port 3306 or 8080.
 
