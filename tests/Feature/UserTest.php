@@ -58,6 +58,23 @@ class UserTest extends TestCase
         ]);
     }
 
+    /**
+     * @test
+     * @dataProvider userRegistrationInformationProvider
+     */
+    public function it_can_only_create_a_user_with_valid_data($field, $value)
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->postJson('/api/users', [
+            $field => $value
+        ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonValidationErrors($field);
+    }
+
     /** @test */
     public function it_only_creates_a_user_for_an_authenticated_request()
     {
@@ -146,5 +163,20 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', [
             'name' => $userToDelete->name,
         ]);
+    }
+
+    public function userRegistrationInformationProvider(): array
+    {
+        return [
+            'Test name is required' => ['name', ''],
+            'Test surnames are required' => ['surnames', ''],
+            'Test email is required' => ['email', ''],
+            'Test email must be valid' => ['email', 'notanemail'],
+            'Test password is required' => ['password', ''],
+            'Test password requires confirmation' => ['password', 'apassword'],
+            'Test country is required' => ['country', ''],
+            'Test phone is required' => ['phone', ''],
+            'Test phone must be numeric' => ['phone', ''],
+        ];
     }
 }
