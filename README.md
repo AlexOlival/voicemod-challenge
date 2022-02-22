@@ -31,6 +31,12 @@ The application should now be running and exposed on `localhost`.
 
 That's it!
 
+## Logging in
+
+Use the login endpoint as described in the `Voicemod Challenge.postman_collection.json` file included in this project's file structure.
+
+A user with the credentials of `email: admin@voicemod.com // password: password` is already created in the database.
+
 ## Running tests
 
 `./vendor/bin/sail test`
