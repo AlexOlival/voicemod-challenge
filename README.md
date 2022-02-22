@@ -39,6 +39,7 @@ That's it!
 ## Shutting down
 
 Simply use the Docker CLI or the UI as normal; or you can use Sail's command to gracefully shutdown:
+
 `./vendor/bin/sail down`
 
 ## Potential issues
