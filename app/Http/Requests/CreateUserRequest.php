@@ -29,7 +29,7 @@ class CreateUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|confirmed',
             'country' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|numeric',
         ];
     }
 }

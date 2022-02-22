@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
             'surnames' => 'sometimes|string',
             'email' => 'sometimes|email|unique:users,email',
             'country' => 'sometimes|string',
-            'phone' => 'sometimes|string',
+            'phone' => 'sometimes|numeric',
             'postal_code' => 'sometimes|string',
         ];
     }
